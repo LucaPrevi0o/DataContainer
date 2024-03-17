@@ -14,5 +14,6 @@ public class Main {
         for (int a=0; a<b.size(); a++) System.out.println(b.get(a));
         b.set(3, -8);
         for (int a=0; a<b.size(); a++) System.out.println(b.get(a));
+        System.out.println(b);
     }
 }
