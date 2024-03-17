@@ -6,5 +6,9 @@ public class Main {
         
         Vector<Integer> b=new Vector<Integer>();
         b.push(4);
+        b.push(9);
+        b.push(2);
+        b.push(5);
+        System.out.println(b.get(2));
     }
 }
