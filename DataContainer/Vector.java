@@ -14,6 +14,24 @@ public class Vector<T> {
         return this; //return this (for chaining)
     }
 
+    public Vector<T> add(int index, T e) {
+
+        Vector<T> newE=new Vector<T>(e), prev=null, i=this.next; //iterator element from next element (this is just a root for the vector with null value)
+        for (int a=0; a<index && i!=null; a++) { //scroll the list until index or last element
+            
+            prev=i; //save previous element
+            i=i.next; //save element in index position
+        }
+
+        if (i==null) throw new ArrayIndexOutOfBoundsException(); //throw exception if null element
+        else { //update list otherwise
+
+            newE.next=i; //put the element before the rest of the vector
+            prev.next=newE; //add the element to the vector from previous index
+            return this; //return this (for chaining)
+        }
+    }
+
     public Vector<T> append(T e) { //add element in first position
 
         Vector<T> newE=new Vector<T>(e), thisE=this.next; //new element, reference to first element
@@ -22,7 +40,7 @@ public class Vector<T> {
         return this; //return this (for chaining)
     }
 
-    public T get(int index) throws ArrayIndexOutOfBoundsException { //return element in specified position (throws exception)
+    public T get(int index) { //return element in specified position (throws exception)
 
         Vector<T> i=this.next; //iterator element from next element (this is just a root for the vector with null value)
         for (int a=0; a<index && i!=null; a++) i=i.next; //scroll the list until index or last element
