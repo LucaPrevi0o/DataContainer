@@ -9,6 +9,7 @@ public class Main {
         b.push(9);
         b.push(2);
         b.push(5);
+        System.out.println(b.get(3));
         System.out.println(b.get(0));
         b.append(-3);
         System.out.println(b.get(0));
