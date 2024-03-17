@@ -61,5 +61,11 @@ public class Vector<T> {
         return i.value; //return element in index position otherwise
     }
 
+    public String toString() { //standard method: toString
+
+        String res=""+this.getClass();
+        return res;
+    }
+
     public Vector() {} //empty constructor
 }
