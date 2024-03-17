@@ -14,5 +14,13 @@ public class Vector<T> {
         return this;
     }
 
+    public T get(int index) throws ArrayIndexOutOfBoundsException {
+
+        Vector<T> i=this;
+        for (int a=0; a<index && i!=null; a++) i=i.next;
+        if (i==null) throw new ArrayIndexOutOfBoundsException();
+        return i.value;
+    }
+
     public Vector() {} //empty constructor
 }
