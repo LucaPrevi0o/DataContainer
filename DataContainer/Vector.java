@@ -16,7 +16,7 @@ public class Vector<T> {
 
     public T get(int index) throws ArrayIndexOutOfBoundsException { //return element in specified position (throws exception)
 
-        Vector<T> i=this; //iterator element
+        Vector<T> i=this.next; //iterator element from next element (this is just a root for the vector with null value)
         for (int a=0; a<index && i!=null; a++) i=i.next; //scroll the list until index or last element
         if (i==null) throw new ArrayIndexOutOfBoundsException(); //throw exception if null element
         return i.value; //return element in index position otherwise
