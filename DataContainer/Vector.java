@@ -63,6 +63,7 @@ public class Vector<T> {
 
     public String toString() { //standard method: toString
 
+        if (this.next==null) return "Vector<null>(0) {}"; //empty list header
         String res=""+this.getClass().getSimpleName()+"<"+this.next.value.getClass().getSimpleName()+">("+this.size()+") { "; //data type header
         for (int a=0; a<this.size(); a++) res+=(this.get(a).toString()+" "); //add elements of vector as string
         return res+"}"; //return vector as string
