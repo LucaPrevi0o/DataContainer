@@ -9,7 +9,7 @@ public class Vector<T> {
     public int size() { //return vector size
 
         int l=0; //vector size
-        for (Vector<T> i=this.next; i.next!=null; i=i.next) l++; //update vector size
+        for (Vector<T> i=this.next; i!=null; i=i.next) l++; //update vector size
         return l; //return calculated size
     }
 

@@ -11,6 +11,6 @@ public class Main {
         b.add(1, -4);
         b.push(5);
         b.append(-3);
-        for (int a=0; a<6; a++) System.out.println(b.get(a));
+        for (int a=0; a<b.size(); a++) System.out.println(b.get(a));
     }
 }
