@@ -68,5 +68,12 @@ public class Vector<T> {
         return res+"}"; //return vector as string
     }
 
+    public boolean equals(Vector<T> other) { //standard method: equals
+
+        if (this.size()!=other.size()) return false; //vectors are different if not of same size
+        for (int a=0; a<this.size(); a++) if (!this.get(a).equals(other.get(a))) return false; //vectors are not equal if any element is different
+        return true; //vectors are equal otherwise
+    }
+
     public Vector() {} //empty constructor
 }
