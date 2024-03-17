@@ -14,6 +14,15 @@ public class Vector<T> {
         return this; //return this (for chaining)
     }
 
+    public Vector<T> append(T e) { //add element in first position
+
+        Vector<T> newE=new Vector<T>(e), thisE=this; //new element, reference to this vector
+        Vector<T> newThis=new Vector<T>(); //new root element
+        newE.next=thisE; //add new element in first position
+        newThis.next=newE; //point list to new root
+        return newThis; //return new vector
+    }
+
     public T get(int index) throws ArrayIndexOutOfBoundsException { //return element in specified position (throws exception)
 
         Vector<T> i=this.next; //iterator element from next element (this is just a root for the vector with null value)
