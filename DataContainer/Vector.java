@@ -6,6 +6,13 @@ public class Vector<T> {
     private Vector<T> next=null; //next element in vector
     private Vector(T e) { this.value=e; } //private initializer compiler
 
+    public int size() { //return vector size
+
+        int l=0; //vector size
+        for (Vector<T> i=this.next; i.next!=null; i=i.next) l++; //update vector size
+        return l; //return calculated size
+    }
+
     public Vector<T> push(T e) { //add new element in last position
 
         Vector<T> i; //iterator element
