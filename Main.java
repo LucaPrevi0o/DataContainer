@@ -12,5 +12,7 @@ public class Main {
         b.push(5);
         b.append(-3);
         for (int a=0; a<b.size(); a++) System.out.println(b.get(a));
+        b.set(3, -8);
+        for (int a=0; a<b.size(); a++) System.out.println(b.get(a));
     }
 }
