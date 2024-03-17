@@ -8,10 +8,9 @@ public class Main {
         b.push(4);
         b.push(9);
         b.push(2);
+        b.add(1, -4);
         b.push(5);
-        System.out.println(b.get(3));
-        System.out.println(b.get(0));
         b.append(-3);
-        System.out.println(b.get(0));
+        for (int a=0; a<6; a++) System.out.println(b.get(a));
     }
 }
