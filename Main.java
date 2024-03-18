@@ -12,8 +12,11 @@ public class Main {
         b.push(5);
         b.append(-3);
         for (int a=0; a<b.size(); a++) System.out.println(b.get(a));
+        System.out.println();
         b.set(3, -8);
         for (int a=0; a<b.size(); a++) System.out.println(b.get(a));
-        System.out.println(b);
+        System.out.println("\n"+b);
+        Vector<Integer> b1=b.copy();
+        System.out.println(b1);
     }
 }
