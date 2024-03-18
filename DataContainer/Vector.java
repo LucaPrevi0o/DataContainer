@@ -84,4 +84,6 @@ public class Vector<T> {
     }
 
     public Vector() {} //empty constructor
+
+    public Vector(Vector<T> e) { for (int i=0; i<e.size(); i++) this.push(e.get(i)); } //copy constructor
 }
