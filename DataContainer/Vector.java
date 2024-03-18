@@ -87,7 +87,7 @@ public class Vector<T> {
 
         Vector<T> newV=new Vector(); //decòare new vector
         for (int i=this.size()-1; i>=0; i--) newV.push(this.get(i)); //push every element in reverse order
-        this.next=newV.next(); //change pointer to inverted vector
+        this.next=newV.next; //change pointer to inverted vector
         return this; //return this (for chaining)
     }
 
