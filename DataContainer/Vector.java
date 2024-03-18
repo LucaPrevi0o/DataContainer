@@ -78,9 +78,9 @@ public class Vector<T> {
 
     public Vector<T> copy() { //create copy of this vector
 
-        Vector<T> newV=new Vector<T>();
-        for (int i=0; i<this.size(); i++) newV.push(this.get(i)); //push every element from the vector
-        return newV; //return this (for chaining)
+        Vector<T> newV=new Vector<T>(); //create new vector
+        for (int i=0; i<this.size(); i++) newV.push(this.get(i)); //push every element to the vector
+        return newV; //return copy of this vector
     }
 
     public Vector() {} //empty constructor
