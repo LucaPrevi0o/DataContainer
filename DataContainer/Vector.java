@@ -63,7 +63,7 @@ public class Vector<T> {
 
     public String toString() { //standard method: toString
 
-        if (this.next==null) return "Vector<null>(0) {}"; //empty list header
+        if (this.next==null) throw new NullPointerException(); //empty list header
         String res=""+this.getClass().getSimpleName()+"<"+this.next.value.getClass().getSimpleName()+">("+this.size()+") { "; //data type header
         for (int a=0; a<this.size(); a++) res+=(this.get(a).toString()+" "); //add elements of vector as string
         return res+"}"; //return vector as string
@@ -85,7 +85,8 @@ public class Vector<T> {
 
     public T[] asArray() { //return this vector as fixed-length array
 
-        T[] arr=new T[this.size()]; //declare array
+        if (this.next==null) throw new NullPointerException(); //empty list header
+        T arr[]=(T[])java.lang.reflect.Array.newInstance(this.next.value.getClass(), this.size()); //declare array
         for (int i=0; i<this.size(); i++) arr[i]=this.get(i); //set every element
         return arr; //return the array
     }

@@ -20,5 +20,8 @@ public class Main {
         System.out.println(b1);
         var b2=new Vector<Integer>(b);
         System.out.println(b2);
+
+        Integer[] newArr=b1.asArray();
+        for (int i=0; i<newArr.length; i++) System.out.print(newArr[i]+" ");
     }
 }
