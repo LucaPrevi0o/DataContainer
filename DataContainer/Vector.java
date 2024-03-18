@@ -23,6 +23,7 @@ public class Vector<T> {
 
     public Vector<T> set(int index, T e) { //update value in index specified position
 
+        if (index<0) throw new ArrayIndexOutOfBoundsException(); //throw exception if null element
         Vector<T> i=this.next; //iterator element from next element (this is just a root for the vector with null value)
         for (int a=0; a<index && i!=null; a++) i=i.next; //scroll the list until index or last element
         if (i==null) throw new ArrayIndexOutOfBoundsException(); //throw exception if null element
@@ -32,6 +33,7 @@ public class Vector<T> {
 
     public Vector<T> add(int index, T e) { //add element in index specified position
 
+        if (index<0) throw new ArrayIndexOutOfBoundsException(); //throw exception if null element
         Vector<T> newE=new Vector<T>(e), prev=null, i=this.next; //iterator element from next element (this is just a root for the vector with null value)
         for (int a=0; a<index && i!=null; a++) { //scroll the list until index or last element
             
@@ -55,6 +57,7 @@ public class Vector<T> {
 
     public T get(int index) { //return element in specified position (throws exception)
 
+        if (index<0) throw new ArrayIndexOutOfBoundsException(); //throw exception if null element
         Vector<T> i=this.next; //iterator element from next element (this is just a root for the vector with null value)
         for (int a=0; a<index && i!=null; a++) i=i.next; //scroll the list until index or last element
         if (i==null) throw new ArrayIndexOutOfBoundsException(); //throw exception if null element
@@ -78,6 +81,7 @@ public class Vector<T> {
 
     public Vector<T> remove(int index) { //remove element from speficied index
 
+        if (index<0) throw new ArrayIndexOutOfBoundsException(); //throw exception if null element
         Vector<T> prev=null, i=this.next; //iterator element from next element (this is just a root for the vector with null value)
         for (int a=0; a<index && i!=null; a++) { //scroll the list until index or last element
             
