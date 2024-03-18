@@ -76,6 +76,20 @@ public class Vector<T> {
         return true; //vectors are equal otherwise
     }
 
+    public Vector<T> remove(int index) { //remove element from speficied index
+
+        Vector<T> prev=null, i=this.next; //iterator element from next element (this is just a root for the vector with null value)
+        for (int a=0; a<index && i!=null; a++) { //scroll the list until index or last element
+            
+            prev=i; //save previous element
+            i=i.next; //save element in index position
+        }
+
+        if (i==null) throw new ArrayIndexOutOfBoundsException(); //throw exception if null element
+        prev.next=i.next; //remove i from list (will be deleted)        
+        return this; //return this (for chaining)
+    }
+
     public Vector<T> copy() { //create copy of this vector
 
         Vector<T> newV=new Vector<T>(); //create new vector
