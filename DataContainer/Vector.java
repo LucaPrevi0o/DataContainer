@@ -83,6 +83,14 @@ public class Vector<T> {
         return newV; //return copy of this vector
     }
 
+    public Vector<T> reverse() { //invert list of items in vector
+
+        Vector<T> newV=new Vector(); //decòare new vector
+        for (int i=this.size()-1; i>=0; i--) newV.push(this.get(i)); //push every element in reverse order
+        this.next=newV.next(); //change pointer to inverted vector
+        return this; //return this (for chaining)
+    }
+
     public T[] asArray() { //return this vector as fixed-length array
 
         if (this.next==null) throw new NullPointerException(); //empty list header
