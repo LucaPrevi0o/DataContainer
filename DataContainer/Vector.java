@@ -83,6 +83,13 @@ public class Vector<T> {
         return newV; //return copy of this vector
     }
 
+    public T[] asArray() { //return this vector as fixed-length array
+
+        T[] arr=new T[this.size()]; //declare array
+        for (int i=0; i<this.size(); i++) arr[i]=this.get(i); //set every element
+        return arr; //return the array
+    }
+
     public Vector() {} //empty constructor
 
     public Vector(Vector<T> e) { for (int i=0; i<e.size(); i++) this.push(e.get(i)); } //copy constructor
