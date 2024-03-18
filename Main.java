@@ -18,5 +18,7 @@ public class Main {
         System.out.println("\n"+b);
         Vector<Integer> b1=b.copy();
         System.out.println(b1);
+        var b2=new Vector<Integer>(b);
+        System.out.println(b2);
     }
 }
