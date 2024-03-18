@@ -76,5 +76,11 @@ public class Vector<T> {
         return true; //vectors are equal otherwise
     }
 
+    public Vector<T> copy(Vector<T> e) { //create copy of vector
+
+        for (int i=0; i<e.size(); i++) this.push(new Vector<T>(e.get(i))); //push every element from the vector
+        return this; //return this (for chaining)
+    }
+
     public Vector() {} //empty constructor
 }
