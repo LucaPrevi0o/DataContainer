@@ -85,7 +85,7 @@ public class Vector<T> {
 
     public Vector<T> reverse() { //invert list of items in vector
 
-        Vector<T> newV=new Vector(); //decòare new vector
+        Vector<T> newV=new Vector<T>(); //declare new vector
         for (int i=this.size()-1; i>=0; i--) newV.push(this.get(i)); //push every element in reverse order
         this.next=newV.next; //change pointer to inverted vector
         return this; //return this (for chaining)
@@ -94,7 +94,7 @@ public class Vector<T> {
     public T[] asArray() { //return this vector as fixed-length array
 
         if (this.next==null) throw new NullPointerException(); //empty list header
-        T arr[]=(T[])java.lang.reflect.Array.newInstance(this.next.value.getClass(), this.size()); //declare array
+        @SuppressWarnings("unchecked") T[] arr=(T[])java.lang.reflect.Array.newInstance(this.next.value.getClass(), this.size()); //declare array
         for (int i=0; i<this.size(); i++) arr[i]=this.get(i); //set every element
         return arr; //return the array
     }
