@@ -94,7 +94,11 @@ public class Vector<T> {
         return this; //return this (for chaining)
     }
 
-    public void clear() { this.next=null; } //remove every element from the list
+    public Vector<T> clear() { //clear the vector
+        
+        this.next=null; //remove every element from the vector
+        return this; //return this (for chaining)
+    }
 
     public Vector<T> copy() { //create copy of this vector
 
