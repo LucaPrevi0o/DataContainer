@@ -10,8 +10,7 @@ public class Main {
         System.out.println(b);
         System.out.println(b1.remove(3));
         System.out.println(b1.reverse()+" - "+b1+" - "+b1.flip()+" - "+b1);
-        b.clear();
-        b.push(5);
+        b.clear().push(5);
         System.out.println(b);
     }
 }
