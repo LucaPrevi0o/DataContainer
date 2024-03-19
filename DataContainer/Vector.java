@@ -110,6 +110,13 @@ public class Vector<T> {
         return newV; //return this (for chaining)
     }
 
+    public Vector<T> flip() { //flip (reverse) the vector elements
+
+        Vector<T> newV=this.reverse(); //create flipped vector
+        this.next=newV.next; //invert this vector using the reversed version
+        return this; //return this (for chaining)
+    }
+
     public T[] asArray() { //return this vector as fixed-length array
 
         if (this.next==null) throw new NullPointerException(); //empty list header
