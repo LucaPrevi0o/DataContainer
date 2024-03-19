@@ -8,6 +8,9 @@ public class Main {
         for (int i=0; i<6; i++) b.push(i);
         Vector<Integer> b1=b.copy().reverse().push(12);
         System.out.println(b);
-        System.out.println(b1.remove(9));
+        System.out.println(b1.remove(3));
+        b.clear();
+        b.push(5);
+        System.out.println(b);
     }
 }
