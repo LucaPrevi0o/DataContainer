@@ -1,6 +1,6 @@
 package DataContainer;
 
-public class Vector<T> {
+public class Vector<T> { //resizable vector class
 
     private T value=null; //stored value
     private Vector<T> next=null; //next element in vector
