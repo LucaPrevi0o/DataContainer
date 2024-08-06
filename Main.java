@@ -1,17 +1,16 @@
+import DataContainer.Tree;
 import DataContainer.Vector;
 
 public class Main {
     
     public static void main(String[] args) {
         
-        Vector<Integer> myVector=new Vector<Integer>(10, 9, 8);
-        myVector.push(4);
-        myVector.append(3);
-        myVector.push(2);
-        System.out.println("now testing: "+myVector.last());
-        System.out.println(myVector);
-        for (var i: myVector) System.out.println(i);
-        var c=myVector.reverse().remove(1).pop().set(1, -10).pop().push(-30).shrink(4).cut();
-        System.out.println(c+"\n"+myVector);
+        var tree=new Tree<Integer>(new Vector<Integer>(10, 9));
+        tree.branch(new Vector<Integer>(3, 4, 5)).branch(new Vector<Integer>(-3, -5, -4));
+        tree.getSubTree(0).branch(7, 6, 5).branch(new Vector<Integer>(-11, -8, -5)).branch(0);
+        tree.getSubTree(1).branch(new Vector<Integer>(0, 0, 0, 0));
+        tree.getSubTree(0).getSubTree(1).branch(new Vector<Integer>(3, 2, 1, 0));
+        tree.getSubTree(0).getSubTree(1).branch(new Vector<Integer>(9, 2, 4, 0));
+        System.out.println(tree);
     }
 }

@@ -234,6 +234,13 @@ public class Vector<T> implements Iterable<T> {
         return res+"}"; //return vector as string
     }
 
+    public String getData() {
+
+        var res="";
+        for (var a: this) res+=(a.toString()+" "); //add elements of vector as string
+        return res; //return vector as string
+    }
+
     public boolean equals(Object other) { //standard method: equals
 
         if (this.size()!=((Vector<?>)other).size()) return false; //vectors are different if not of same size
