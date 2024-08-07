@@ -1,21 +1,16 @@
-package DataContainer;
+package DataContainer.Tree;
+
+import DataContainer.Vector.Vector;
 
 public class Tree<T> {
     
     private Vector<Tree<T>> branch=new Vector<Tree<T>>();
     private Vector<T> leaves=new Vector<T>();
 
-    public Tree(Vector<T> leaves) { this.leaves=leaves; }
     public Tree(T... leaves) { this.leaves=new Vector<T>(leaves); }
     public Tree() {}
     public Tree<T> getSubTree(int node) { return this.branch.get(node); }
     public Vector<T> getLeaves() { return leaves; }
-
-    public Tree<T> branch(Vector<T> newBranch) { 
-        
-        branch.push(new Tree<T>(newBranch));
-        return this;
-    }
 
     public Tree<T> branch(T... leaves) { 
         
@@ -36,7 +31,7 @@ public class Tree<T> {
 
     public String toString() {
 
-        var res=this.leaves.getData()+"\n";
+        var res="Tree<"+this.leaves.get(0).getClass().getSimpleName()+">\n"+this.leaves.getData()+"\n";
         for (var i: this.branch) res+=this.branch.indexOf(i)+") "+i.print(1);
         return res;
     }

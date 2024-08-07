@@ -1,26 +1,16 @@
-package DataContainer;
+package DataContainer.Vector;
 
 import java.util.Iterator;
 
-class VectorOutOfBoundsException extends Exception {
+import DataContainer.Exception.*;
 
-    public VectorOutOfBoundsException() { super(); }
-    public VectorOutOfBoundsException(String e) { super(e); }
-}
-
-class EmptyVectorException extends Exception {
-
-    public EmptyVectorException() { super(); }
-    public EmptyVectorException(String e) { super(e); }
-}
-
-public class Vector<T> implements Iterable<T> {
+public class SortableVector<T extends Comparable<T>> implements Iterable<T> {
 
     private T value=null; //stored value
-    private Vector<T> next=null; //next element in vector
-    private Vector(T value) { this.value=value; } //private initializer compiler
-    public Vector(T... list) { for (var a: list) this.push(a); }
-    public Vector() {}
+    private SortableVector<T> next=null; //next element in vector
+    private SortableVector(T value) { this.value=value; } //private initializer compiler
+    public SortableVector(T... list) { for (var a: list) this.push(a); }
+    public SortableVector() {}
 
     public int size() { //return vector size
 
@@ -29,21 +19,21 @@ public class Vector<T> implements Iterable<T> {
         return l; //return calculated size
     }
 
-    public Vector<T> push(T value) { //add new element in last position
+    public SortableVector<T> push(T value) { //add new element in last position
 
         var i=this; //iterator element
         while (i.next!=null) i=i.next; //scroll the entire list
-        i.next=new Vector<T>(value); //add new element as last
+        i.next=new SortableVector<T>(value); //add new element as last
         return this; //return this (for chaining)
     }
 
-    public Vector<T> add(int index, T value) { //add element in index specified position
+    public SortableVector<T> add(int index, T value) { //add element in index specified position
 
         try {
 
             if (index<0) throw new VectorOutOfBoundsException("Index "+index+" is negative"); //throw exception if negative index
-            if (index>=this.size()) throw new VectorOutOfBoundsException("Index "+index+" is greater than last index "+(this.size()-1)); //throw exception if index is larger than Vector size
-            Vector<T> newE=new Vector<T>(value), prev=null, i=this.next; //iterator element from next element (this is just a root for the vector with null value)
+            if (index>=this.size()) throw new VectorOutOfBoundsException("Index "+index+" is greater than last index "+(this.size()-1)); //throw exception if index is larger than SortableVector size
+            SortableVector<T> newE=new SortableVector<T>(value), prev=null, i=this.next; //iterator element from next element (this is just a root for the vector with null value)
             for (var a=0; a<index; a++) { //scroll the list until index or last element
                 
                 prev=i; //save previous element
@@ -62,20 +52,20 @@ public class Vector<T> implements Iterable<T> {
         return null;
     }
 
-    public Vector<T> append(T value) { //add element in first position
+    public SortableVector<T> append(T value) { //add element in first position
 
-        Vector<T> newE=new Vector<T>(value), thisE=this.next; //new element, reference to first element
+        SortableVector<T> newE=new SortableVector<T>(value), thisE=this.next; //new element, reference to first element
         newE.next=thisE; //add new element in first position
         this.next=newE; //update vector after new element
         return this; //return this (for chaining)
     }
 
-    public Vector<T> set(int index, T value) { //update value in index specified position
+    public SortableVector<T> set(int index, T value) { //update value in index specified position
 
         try {
 
             if (index<0) throw new VectorOutOfBoundsException("Index "+index+" is negative"); //throw exception if negative index
-            if (index>=this.size()) throw new VectorOutOfBoundsException("Index "+index+" is greater than last index "+(this.size()-1)); //throw exception if index is larger than Vector size
+            if (index>=this.size()) throw new VectorOutOfBoundsException("Index "+index+" is greater than last index "+(this.size()-1)); //throw exception if index is larger than SortableVector size
             var i=this.next; //iterator element from next element (this is just a root for the vector with null value)
             for (int a=0; a<index; a++) i=i.next; //scroll the list until index
             i.value=value; //update value in index position
@@ -89,7 +79,7 @@ public class Vector<T> implements Iterable<T> {
         return null;
     }
 
-    public Vector<T> pop() { //remove last element
+    public SortableVector<T> pop() { //remove last element
 
         var i=this; //start from first element
         for (var a=0; a<this.size()-1; a++) i=i.next; //loop over every element
@@ -97,7 +87,7 @@ public class Vector<T> implements Iterable<T> {
         return this; //return this (for chaining)
     }
 
-    public Vector<T> cut() { //remove first element
+    public SortableVector<T> cut() { //remove first element
 
         try {
 
@@ -113,12 +103,12 @@ public class Vector<T> implements Iterable<T> {
         return null;
     }
 
-    public Vector<T> remove(int index) { //remove element at index specified position
+    public SortableVector<T> remove(int index) { //remove element at index specified position
 
         try {
 
             if (index<0) throw new VectorOutOfBoundsException("Index "+index+" is negative"); //throw exception if negative index
-            if (index>this.size()) throw new VectorOutOfBoundsException("Index "+index+" is greater than size "+this.size()); //throw exception if index is larger than Vector size
+            if (index>this.size()) throw new VectorOutOfBoundsException("Index "+index+" is greater than size "+this.size()); //throw exception if index is larger than SortableVector size
             var i=this.next; //iterator element from next element (this is just a root for the vector with null value)
             for (int a=0; a<index-1; a++) i=i.next; //scroll the list until index
             i.next=i.next.next; //clear value after index position
@@ -132,12 +122,12 @@ public class Vector<T> implements Iterable<T> {
         return null;
     }
 
-    public Vector<T> shrink(int index) { //remove every element starting from index specified position (resulting Vector will have same size as index)
+    public SortableVector<T> shrink(int index) { //remove every element starting from index specified position (resulting SortableVector will have same size as index)
 
         try {
 
             if (index<0) throw new VectorOutOfBoundsException("Index "+index+" is negative"); //throw exception if negative index
-            if (index>this.size()) throw new VectorOutOfBoundsException("Index "+index+" is greater than size "+this.size()); //throw exception if index is larger than Vector size
+            if (index>this.size()) throw new VectorOutOfBoundsException("Index "+index+" is greater than size "+this.size()); //throw exception if index is larger than SortableVector size
             var i=this.next; //iterator element from next element (this is just a root for the vector with null value)
             for (int a=0; a<index-1; a++) i=i.next; //scroll the list until index
             i.clear(); //clear every value after index position
@@ -151,7 +141,7 @@ public class Vector<T> implements Iterable<T> {
         return null;
     }
 
-    public Vector<T> clear() { //clear every element in vector
+    public SortableVector<T> clear() { //clear every element in vector
 
         this.next=null; //reset the first element (every value after it should be erased)
         return this; //return this (for chaining)
@@ -174,7 +164,7 @@ public class Vector<T> implements Iterable<T> {
         try {
             
             if (index<0) throw new VectorOutOfBoundsException("Index "+index+" is negative"); //throw exception if negative index
-            if (index>=this.size()) throw new VectorOutOfBoundsException("Index "+index+" is greater than last index "+(this.size()-1)); //throw exception if index is larger than Vector size
+            if (index>=this.size()) throw new VectorOutOfBoundsException("Index "+index+" is greater than last index "+(this.size()-1)); //throw exception if index is larger than SortableVector size
             var i=this.next; //iterator element from next element (this is just a root for the vector with null value)
             for (var a=0; a<index; a++) i=i.next; //scroll the list until index or last element
             return i.value; //return element in index position otherwise
@@ -219,16 +209,16 @@ public class Vector<T> implements Iterable<T> {
         return null;
     }
 
-    public Vector<T> reverse() { //return the inverse of a Vector
+    public SortableVector<T> reverse() { //return the inverse of a SortableVector
 
-        var res=new Vector<T>(); //new Vector
+        var res=new SortableVector<T>(); //new SortableVector
         for (var a: this) res.append(a); //append as first every item of this
-        return res; //return new Vector
+        return res; //return new SortableVector
     }
 
     public String toString() { //standard method: toString
 
-        if (this.next==null) return "Vector<null>(0) {}"; //empty list header
+        if (this.next==null) return "SortableVector<null>(0) {}"; //empty list header
         String res=""+this.getClass().getSimpleName()+"<"+this.next.value.getClass().getSimpleName()+">("+this.size()+") { "; //data type header
         for (var a: this) res+=(a.toString()+" "); //add elements of vector as string
         return res+"}"; //return vector as string
@@ -243,8 +233,8 @@ public class Vector<T> implements Iterable<T> {
 
     public boolean equals(Object other) { //standard method: equals
 
-        if (this.size()!=((Vector<?>)other).size()) return false; //vectors are different if not of same size
-        for (var a=0; a<this.size(); a++) if (!this.get(a).equals(((Vector<?>)other).get(a))) return false; //vectors are not equal if any element is different
+        if (this.size()!=((SortableVector<?>)other).size()) return false; //vectors are different if not of same size
+        for (var a=0; a<this.size(); a++) if (!this.get(a).equals(((SortableVector<?>)other).get(a))) return false; //vectors are not equal if any element is different
         return true; //vectors are equal otherwise
     }
 
@@ -252,14 +242,29 @@ public class Vector<T> implements Iterable<T> {
     
     private class VectorIterator implements Iterator<T> { //Iterator class
 
-        private Vector<T> data; //private reference to the next pointer
-        private VectorIterator(Vector<T> v) { this.data=v; } //private constructor for new Iterator
+        private SortableVector<T> data; //private reference to the next pointer
+        private VectorIterator(SortableVector<T> v) { this.data=v; } //private constructor for new Iterator
         public boolean hasNext() { return this.data.next!=null; } //Iterator check for next pointer to be set
         
-        public T next() { //iterator loop over the Vector
+        public T next() { //iterator loop over the SortableVector
             
             this.data=this.data.next; //go to next pointer
             return this.data.value; //return its value
         }
+    }
+    
+    private void exchange(int s1, int s2) { //default exchange algorithm for elements
+
+        var temp=this.get(s2); //create temp value
+        this.set(s2, this.get(s1)); //exchange values
+        this.set(s1, temp); //restore temp value
+    }
+
+    public SortableVector<T> sort() {
+
+        for (var i=0; i<this.size(); i++)
+            for (var j=i; j<this.size(); j++)
+                if (this.get(i).compareTo(this.get(j))>0) this.exchange(i, j);
+        return this;
     }
 }
