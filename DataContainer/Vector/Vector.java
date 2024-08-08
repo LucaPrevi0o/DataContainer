@@ -1,13 +1,12 @@
 package DataContainer.Vector;
 
 import java.util.Iterator;
-
 import DataContainer.Exception.*;
 
 public class Vector<T> implements Iterable<T> {
 
-    private T value=null; //stored value
-    private Vector<T> next=null; //next element in vector
+    protected T value=null; //stored value
+    protected Vector<T> next=null; //next element in vector
     private Vector(T value) { this.value=value; } //private initializer compiler
     public Vector(T... list) { for (var a: list) this.push(a); }
     public Vector() {}
@@ -234,8 +233,9 @@ public class Vector<T> implements Iterable<T> {
     public boolean equals(Object other) { //standard method: equals
 
         if (this.size()!=((Vector<?>)other).size()) return false; //vectors are different if not of same size
-        for (var a=0; a<this.size(); a++) if (!this.get(a).equals(((Vector<?>)other).get(a))) return false; //vectors are not equal if any element is different
-        return true; //vectors are equal otherwise
+        if (this.value!=null && ((Vector<?>)other).value!=null && !this.value.equals(((Vector<?>)other).value)) return false; //vectors are not equal if any element is different
+        if (this.next!=null && ((Vector<?>)other).next!=null) return this.next.equals(((Vector<?>)other).next); //check if the next element is equal (if exists)
+        return true; //vectors are equal if the last element is equal
     }
 
     public Iterator<T> iterator() { return new VectorIterator(this); } //return a new Iterator over the vector

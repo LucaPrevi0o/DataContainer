@@ -1,26 +1,30 @@
-import DataContainer.Tree.*;
+import DataContainer.Tree.Tree;
+import DataContainer.Tree.BinaryTree.BinaryTree;
+import DataContainer.Tree.BinaryTree.SortableBinaryTree;
 import DataContainer.Vector.SortableVector;
+import DataContainer.Vector.Vector;
 
 public class Main {
     
     public static void main(String[] args) {
-        
-        var tree=new Tree<Integer>(10, 9);
-        tree.branch(3, 4, 5).branch(-3, -5, -4);
-        tree.getSubTree(0).branch(7, 6, 5).branch(-11, -8, -5).branch(0);
-        tree.getSubTree(1).branch(0, 0, 0, 0);
-        tree.getSubTree(0).getSubTree(1).branch(3, 2, 1, 0).branch(9, 2, 4, 0);
-        System.out.println(tree+"\n");
 
-        var sortableVector=new SortableVector<Integer>(1, 3, 2, 5, 9, 4, 0).sort();
-        System.out.println(sortableVector+"\n");
+        var v=new Vector<Integer>(3, 6, 4);
+        System.out.println(v);
 
-        var binTree=new BinaryTree<Integer>(0);
-        binTree.pushLeft(1).pushRight(3);
-        binTree.getLeftSubTree().pushLeft(23);
-        System.out.println(binTree+"\n");
+        var n=new SortableVector<Integer>(3, 6, 5).sort();
+        System.out.println(n);
 
-        var sortedBinTree=new SortedBinaryTree<Integer>(5).push(3).push(2).push(4).push(7).push(3).push(6).push(8).push(0);
-        System.out.println(sortedBinTree);
+        var q=new Tree<Integer>(1, 2, 5).branch(4, 7).branch(1, 3, 4);
+        q.getSubTree(0).branch(1, 1).branch(3, 5, 7);
+        q.getSubTree(0).getSubTree(1).branch(6, 65, 0, 8);
+        q.getSubTree(1).branch(4, 0, 7, 6, 9, 8, 7, 0, 6, 8);
+        System.out.println(q);
+
+        var r=new BinaryTree<Integer>(5).pushLeft(6).pushRight(4);
+        r.getLeftSubTree().pushLeft(9).pushRight(7);
+        System.out.println(r);
+
+        var k=new SortableBinaryTree<Integer>(3).push(5).push(1).push(4);
+        System.out.println(k);
     }
 }

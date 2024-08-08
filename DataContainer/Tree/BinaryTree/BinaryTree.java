@@ -1,10 +1,9 @@
-package DataContainer.Tree;
+package DataContainer.Tree.BinaryTree;
 
 public class BinaryTree<T> {
     
-    private T leaf;
-    private BinaryTree<T> leftBranch, rightBranch;
-
+    protected T leaf;
+    protected BinaryTree<T> leftBranch, rightBranch;
     public BinaryTree(T leaf) { this.leaf=leaf; }
 
     public BinaryTree<T> pushLeft(T value) { 
@@ -34,7 +33,7 @@ public class BinaryTree<T> {
 
     public String toString() {
 
-        var res="SortableTree<"+this.leaf.getClass().getSimpleName()+">\n"+this.leaf+"\n";
+        var res=this.getClass().getSimpleName()+"<"+this.leaf.getClass().getSimpleName()+">\n"+this.leaf+"\n";
         res+="- "+(this.leftBranch==null ? "null" : this.leftBranch.print(1))+"\n";
         res+="- "+(this.rightBranch==null ? "null" : this.rightBranch.print(1));
         return res;
