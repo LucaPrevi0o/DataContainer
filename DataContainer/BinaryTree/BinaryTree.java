@@ -1,4 +1,4 @@
-package DataContainer.Tree.BinaryTree;
+package DataContainer.BinaryTree;
 
 public class BinaryTree<T> {
     

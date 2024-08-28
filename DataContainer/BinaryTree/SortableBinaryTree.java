@@ -1,4 +1,4 @@
-package DataContainer.Tree.BinaryTree;
+package DataContainer.BinaryTree;
 
 public class SortableBinaryTree<T extends Comparable<T>> extends BinaryTree<T> {
     

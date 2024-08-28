@@ -1,6 +1,6 @@
+import DataContainer.BinaryTree.BinaryTree;
+import DataContainer.BinaryTree.SortableBinaryTree;
 import DataContainer.Tree.Tree;
-import DataContainer.Tree.BinaryTree.BinaryTree;
-import DataContainer.Tree.BinaryTree.SortableBinaryTree;
 import DataContainer.Vector.SortableVector;
 import DataContainer.Vector.Vector;
 
