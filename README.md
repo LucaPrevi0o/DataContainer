@@ -1,0 +1,8 @@
+# DataContainer
+`DataContainer` is a Java-based library for different primitive data types, that handle specific cases:
+* `Vector` and `SortableVector` handle lists of data
+* `BinaryTree` and `SortableBinaryTree` handle binary trees
+* `Tree` handles simple multi-branch trees
+
+Each `DataContainer` can be parametrized to a generic type, in order to fit specific implementations.
+
