@@ -6,3 +6,12 @@
 
 Each `DataContainer` can be parametrized to a generic type, in order to fit specific implementations.
 
+## Releases:
+
+### v1.0
+* Added `Vector`
+
+### v1.1
+* Added `Tree`
+* Added `BinaryTree` and `SortableBinaryTree`
+* Added `SortableVector`
