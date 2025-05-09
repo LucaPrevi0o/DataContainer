@@ -8,10 +8,10 @@ Each `DataContainer` can be parametrized to a generic type, in order to fit spec
 
 ## Releases:
 
-### v1.0
+### [v1.0](https://github.com/LucaPrevi0o/DataContainer/releases/tag/java)
 * Added `Vector`
 
-### v1.1
+### [v1.1](https://github.com/LucaPrevi0o/DataContainer/releases/tag/java-1.1)
 * Added `Tree`
 * Added `BinaryTree` and `SortableBinaryTree`
 * Added `SortableVector`
